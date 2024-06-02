@@ -51,6 +51,23 @@ export default function UserDashboardPage() {
   };
 
 
+  const submitCode = async () => {
+
+    setLoading(true)
+
+    try {
+      setError('')
+      const response = await codeService.submitCode({ code });
+      console.log('Submit code:', response);
+    //   setOutput(response.data.output);
+    //     setResult(response.data.result ? 'Success' : 'Fail');
+    } catch (error) {
+      setError('error');
+      console.error('Error submitting form:', error);
+    }
+  };
+
+
 
     return (
       <>
@@ -75,7 +92,7 @@ export default function UserDashboardPage() {
         />
       </div>
       <button onClick={runCode}>Run</button>
-      {/* <button onClick={submitCode}>Submit</button> */}
+      <button onClick={submitCode}>Submit</button>
       <div id="output">
         <h2>Output</h2>
         <pre>{output}</pre>
