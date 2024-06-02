@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import codeService from '../services/code_service';
+import authService from '../services/auth-service';
 import Editor from '@monaco-editor/react';
 import { useState } from "react"
 
