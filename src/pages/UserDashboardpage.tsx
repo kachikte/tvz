@@ -4,6 +4,8 @@ import authService from '../services/auth-service';
 import Editor from '@monaco-editor/react';
 import { useEffect, useState } from "react"
 import ProblemList from '../components/ProblemList';
+import DOMPurify from 'dompurify';
+
 
 type Problem = {
     id: number;
@@ -102,7 +104,8 @@ export default function UserDashboardPage() {
   const submitCode = async () => {
 
     try {
-      const response = await codeService.submitCode( code, selectedProblem!.id,  jsonUser.email);
+        const sanitizedCode = DOMPurify.sanitize(code);
+      const response = await codeService.submitCode( sanitizedCode, selectedProblem!.id,  jsonUser.email);
       console.log('Submit code:', response);
       setOutput(response['output']);
       setResult(response['result'] == 'Success' ? 'Success' : 'Fail');
