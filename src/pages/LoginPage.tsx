@@ -37,9 +37,9 @@ export default function LoginPage() {
       const response = await authService.login(formData.email, formData.password);
       console.log('Login successful:', response.role);
       if (response.role == 1) {
-        navigate('/admin-dashboard');
+        navigate('/admin-dashboard', {replace: true});
       } else {
-        navigate('/user-dashboard');
+        navigate('/user-dashboard', {replace: true});
       }
     } catch (error) {
       setError('error');
@@ -80,7 +80,17 @@ export default function LoginPage() {
               </div>
               <br />
               <div className='space-x-3 my-8'>
-                <button className='bg-orange-500 px-12 w-5/12' type="submit">{loading ? <Spinner /> : 'Login'}</button>
+                <button className='bg-orange-500 px-12 w-5/12' type="button">{loading ? <Spinner /> : 'Login'}</button>
+              </div>
+
+              <br />
+
+              <div> Or </div>
+
+              <br />
+
+              <div className='space-x-3 my-8'>
+                <button className='bg-orange-500 px-12 w-5/12' type="button" onClick={() => navigate('/signup')}>Signup</button>
               </div>
 
               <div className='text-white text-sm text-left p-8'>

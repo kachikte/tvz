@@ -55,7 +55,7 @@ export default function SignUpPage() {
       setError('')
       const response = await authService.register(data);
       console.log('Form submitted successfully:', response);
-      navigate('/login'); // Navigate to the About page
+      navigate('/'); // Navigate to the About page
     } catch (error) {
       setError('error');
       console.error('Error submitting form:', error);

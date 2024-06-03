@@ -11,8 +11,8 @@ const RouterAdapter: React.FC = () => {
       <div>
         {/* Define your routes */}
         <Routes>
-          <Route path="/" element={<SignUpPage />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/" element={<LoginPage />} />
           <Route path="/user-dashboard" element={<UserDashboardPage />} />
           <Route path="/admin-dashboard" element={<AdminDashboardPage />} />
           {/* <Route path="/admin-dashboard" element={<AdminDashboardPage />} /> */}
