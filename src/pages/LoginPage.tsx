@@ -80,7 +80,7 @@ export default function LoginPage() {
               </div>
               <br />
               <div className='space-x-3 my-8'>
-                <button className='bg-orange-500 px-12 w-5/12' type="button">{loading ? <Spinner /> : 'Login'}</button>
+                <button className='bg-orange-500 px-12 w-5/12' type="submit">{loading ? <Spinner /> : 'Login'}</button>
               </div>
 
               <br />
