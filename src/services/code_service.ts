@@ -20,10 +20,10 @@ const codeService = {
 
 
 
-  submitCode: async (code: any) => {
+  submitCode: async (code: any, problemId: any, email: string) => {
 
     try {
-    const response = await axiosInstance.post(`${API_URL}/code/submit`, code)
+    const response = await axiosInstance.post(`${API_URL}/code/submit`, {code, problemId, email})
     console.log('THIS IS THE SUBMIT CODE - ', response.data);
       
     return response.data;
@@ -32,6 +32,34 @@ const codeService = {
         throw error;
       }
   },
+
+  getUserAttempt: async (email: any) => {
+
+    try {
+    const response = await axiosInstance.post(`${API_URL}/code/user-attempt`, {email: email})
+    console.log('THIS IS THE GET ATTEMPTS - ', response.data);
+      
+    return response.data;
+    } catch(error: any) {
+        console.error(error);
+        throw error;
+      }
+  },
+
+
+  getAttempts: async () => {
+
+    try {
+    const response = await axiosInstance.get(`${API_URL}/adminattempts/attempts`)
+    console.log('THIS IS THE GET ATTEMPTS - ', response.data);
+      
+    return response.data;
+    } catch(error: any) {
+        console.error(error);
+        throw error;
+      }
+  },
+
 
 };
 
