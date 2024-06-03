@@ -36,4 +36,4 @@ To run the code please do the following:
 
 Clone the repository
 run - npm install
-npm eun dev
+npm run dev
