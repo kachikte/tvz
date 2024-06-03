@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://tvzcore-d8e762e1f71a.herokuapp.com/'; // Update with your actual API URL
+const API_URL = 'https://tvzcore-d8e762e1f71a.herokuapp.com'; // Update with your actual API URL
 
 const authService = {
   login: async (email: string, password: string) => {

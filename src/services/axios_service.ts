@@ -2,7 +2,7 @@ import axios from 'axios';
 import authService from './auth-service';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:4000', // Update with your actual API URL
+  baseURL: 'https://tvzcore-d8e762e1f71a.herokuapp.com', // Update with your actual API URL
   headers: {
     'Content-Type': 'application/json',
   },
