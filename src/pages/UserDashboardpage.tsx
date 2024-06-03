@@ -7,6 +7,11 @@ import ProblemList from '../components/ProblemList';
 import DOMPurify from 'dompurify';
 
 
+const generateKey = (prefix: string) => {
+  return `${prefix}_${Math.random().toString(36).substr(2, 9)}_${Date.now()}`;
+};
+
+
 type Problem = {
     id: number;
     title: string;
@@ -67,7 +72,7 @@ export default function UserDashboardPage() {
 
   useEffect(() => {
     codeService.getUserAttempt(jsonUser.email).then(result => {
-        console.log('Attempts - ', result['data']);
+        console.log('Attempts - ', result['data'][0].dataValues.id);
         setAttempts(result['data'])
     }).catch(err => {
         console.log('Attempts error - ', err.toString());
@@ -195,27 +200,27 @@ export default function UserDashboardPage() {
                         </thead>
                         <tbody>
                             {attempts.map((item) => (
-                                <tr key={item['problemId']} className={'hover:bg-red-300'}>
+                                <tr key={generateKey('tvzcorp')} className={'hover:bg-red-300'}>
                                     <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap text-black">
-                                        {item['problemId']}
+                                        {item['dataValues']['id']}
                                     </th>
                                     <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap text-black">
-                                        {item['code']}
+                                        {item['dataValues']['code']}
                                     </th>
                                     <td className="px-6 py-4">
-                                        {item['coutput']}
+                                        {item['dataValues']['coutput']}
                                     </td>
                                     <td className="px-6 py-4">
-                                        {item['output']}
+                                        {item['dataValues']['output']}
                                     </td>
                                     <td className="px-2 py-4">
-                                        {item['result']}
+                                        {item['dataValues']['result']}
                                     </td>
                                     <td className="px-6 py-4">
-                                        {(item['createdAt'] as string).split('T')[0]}
+                                        {(item['dataValues']['createdAt'] as string).split('T')[0]}
                                     </td>
                                     <td className="px-6 py-4">
-                                        <button onClick={() => handleViewDetails(item)} className='bg-[#FD4F00] text-white rounded-xl h-10 py-2 text-sm mx-1'>View Details</button>
+                                        <button onClick={() => handleViewDetails(item['dataValues'])} className='bg-[#FD4F00] text-white rounded-xl h-10 py-2 text-sm mx-1'>View Details</button>
                                     </td>
                                 </tr>
                             ))}
